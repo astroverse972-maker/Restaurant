@@ -90,7 +90,6 @@ const SeaCreature: React.FC<{ creature: any }> = ({ creature }) => {
                 height: creature.size / creature.aspectRatio,
                 color: 'rgba(255, 255, 255, 0.5)',
                 opacity: creature.opacity,
-                filter: `blur(${creature.blur}px)`,
                 willChange: 'transform'
             }}
         >
@@ -105,22 +104,21 @@ const SeaCreature: React.FC<{ creature: any }> = ({ creature }) => {
 };
 
 export const SeaCreatures: React.FC = () => {
-    const creatures = useMemo(() => Array.from({ length: 25 }).map((_, i) => { // Increased count to 25
+    const creatures = useMemo(() => Array.from({ length: 15 }).map((_, i) => { // Reduced count to 15 for performance
         const type = creatureTypes[Math.floor(Math.random() * creatureTypes.length)];
-        const size = Math.random() * 60 + 30;
+        const size = Math.random() * 50 + 25;
         return {
             id: i,
             ...type,
             size: size,
             x: Math.random() * window.innerWidth,
             y: Math.random() * window.innerHeight,
-            vx: (Math.random() - 0.5) * 0.8, // Base speed
-            vy: (Math.random() - 0.5) * 0.8,
-            opacity: Math.random() * 0.4 + 0.3,
-            blur: Math.random() * 1.5,
+            vx: (Math.random() - 0.5) * 0.7,
+            vy: (Math.random() - 0.5) * 0.7,
+            opacity: Math.random() * 0.4 + 0.2,
             seed: Math.random() * 3,
-            turnSpeed: Math.random() * 0.5 + 0.3, // How fast it turns
-            turnAmount: (Math.random() - 0.5) * 0.5, // How much it turns
+            turnSpeed: Math.random() * 0.5 + 0.3, 
+            turnAmount: (Math.random() - 0.5) * 0.4,
         };
     }), []);
 

@@ -1,4 +1,4 @@
-import React, { useState, MouseEvent, memo, useCallback } from 'react';
+import React, { useState, MouseEvent, memo, useCallback, useEffect } from 'react';
 import { menuItems } from '../constants';
 import { MenuItem } from '../types';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -11,7 +11,7 @@ interface Ripple {
   id: number;
 }
 
-const MenuCard: React.FC<{ item: MenuItem, onExpand: (item: MenuItem) => void, isExpanded: boolean }> = memo(({ item, onExpand, isExpanded }) => {
+const MenuCard: React.FC<{ item: MenuItem; onExpand: (item: MenuItem) => void; isExpanded: boolean; index: number }> = memo(({ item, onExpand, isExpanded, index }) => {
     const [ripples, setRipples] = useState<Ripple[]>([]);
 
     const createRipple = (event: MouseEvent<HTMLDivElement>) => {
@@ -32,7 +32,7 @@ const MenuCard: React.FC<{ item: MenuItem, onExpand: (item: MenuItem) => void, i
     };
 
     return (
-        <FloatingCard className="cursor-pointer !p-0 overflow-hidden" delay={Math.random() * 2}>
+        <FloatingCard className="cursor-pointer !p-0 overflow-hidden" delay={index * 0.05}>
             <motion.div layout onClick={createRipple} className="relative p-6">
                 <motion.div layoutId={`image-${item.id}`} className="rounded-lg overflow-hidden mb-4">
                     <div className="fade-edges bg-white/20">
@@ -71,14 +71,14 @@ const MenuCard: React.FC<{ item: MenuItem, onExpand: (item: MenuItem) => void, i
 const ExpandedMenuCard: React.FC<{ item: MenuItem; onCollapse: () => void }> = ({ item, onCollapse }) => {
     return (
         <motion.div
-            className="fixed inset-0 z-50 flex items-center justify-center p-4"
+            className="fixed inset-0 z-[100] flex items-start justify-center px-4 pb-4 pt-16"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
         >
             <div className="absolute inset-0 bg-deep-navy/50 backdrop-blur-sm" onClick={onCollapse}></div>
             <motion.div className="relative z-10 w-full max-w-2xl">
-                 <FloatingCard className="cursor-default max-h-[calc(100vh-2rem)] overflow-y-auto">
+                 <FloatingCard className="cursor-default max-h-[calc(100vh-5rem)] overflow-y-auto">
                     <motion.div layoutId={`image-${item.id}`} className="rounded-lg overflow-hidden mb-4">
                         <div className="fade-edges bg-white/20">
                             <LazyImage src={item.image} alt={item.name} className="w-full h-64 object-contain"/>
@@ -112,9 +112,26 @@ const ExpandedMenuCard: React.FC<{ item: MenuItem; onCollapse: () => void }> = (
 const MenuPage: React.FC = () => {
     const [expandedItem, setExpandedItem] = useState<MenuItem | null>(null);
 
+    useEffect(() => {
+        if (expandedItem) {
+            const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+            document.body.style.overflow = 'hidden';
+            document.body.style.paddingRight = `${scrollbarWidth}px`;
+        } else {
+            document.body.style.overflow = '';
+            document.body.style.paddingRight = '';
+        }
+
+        return () => {
+            document.body.style.overflow = '';
+            document.body.style.paddingRight = '';
+        };
+    }, [expandedItem]);
+
     const categories = ['Appetizers', 'Main Courses', 'Desserts', 'Beverages'];
     
     const handleExpand = useCallback((item: MenuItem) => {
+        window.scrollTo(0, 0);
         setExpandedItem(item);
     }, []);
 
@@ -137,12 +154,13 @@ const MenuPage: React.FC = () => {
                 <div key={category} className="mb-16">
                     <h2 className="text-4xl font-serif text-deep-navy mb-8 border-b-2 border-deep-navy/20 pb-2">{category}</h2>
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {menuItems.filter(item => item.category === category).map(item => (
+                        {menuItems.filter(item => item.category === category).map((item, index) => (
                             <MenuCard 
                                 key={item.id} 
                                 item={item}
                                 onExpand={handleExpand}
                                 isExpanded={!!expandedItem && expandedItem.id === item.id}
+                                index={index}
                             />
                         ))}
                     </div>

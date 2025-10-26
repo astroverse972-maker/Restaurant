@@ -15,7 +15,7 @@ export const LazyImage: React.FC<LazyImageProps> = ({ src, alt, className, ...pr
                     observer.unobserve(entry.target);
                 }
             },
-            { rootMargin: '600px 0px 600px 0px' } // Load 600px before it enters viewport vertically
+            { rootMargin: '1200px 0px 1200px 0px' } // Load 1200px before it enters viewport vertically
         );
 
         const currentRef = placeholderRef.current;
