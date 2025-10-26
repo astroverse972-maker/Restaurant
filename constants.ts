@@ -48,17 +48,17 @@ export const menuItems: MenuItem[] = [
 
 export const specialItems: SpecialItem[] = [
     {
-        id: 101, name: 'The Golden Leviathan', description: 'A whole roasted branzino stuffed with citrus and herbs, encrusted in gold leaf.', price: '$120', category: 'Main Courses', image: 'https://res.cloudinary.com/dubg7bfmv/image/upload/v1761459684/generated-image-1761459648957_k7akr0.jpg',
+        id: 101, name: 'The Golden Leviathan', description: 'A whole roasted branzino stuffed with citrus and herbs, encrusted in gold leaf.', price: '$120', category: 'Main Courses', image: 'https://res.cloudinary.com/dubg7bfmv/image/upload/v1761491487/the_golden_leviathan_a_treasure_from_the_deep_a_wh_t8rdjp.jpg',
         tagline: "A Treasure from the Deep",
         ingredients: ['Branzino', 'Lemon', 'Thyme', 'Edible Gold Leaf', 'Fennel']
     },
     {
-        id: 102, name: 'Poseidon’s Pearl Pasta', description: 'Handmade squid ink pasta with lobster, shrimp, and mussels in a delicate white wine sauce.', price: '$55', category: 'Main Courses', image: 'https://res.cloudinary.com/dubg7bfmv/image/upload/v1761459712/generated-image-1761459695441_n3gqmz.jpg',
+        id: 102, name: 'Poseidon’s Pearl Pasta', description: 'Handmade squid ink pasta with lobster, shrimp, and mussels in a delicate white wine sauce.', price: '$55', category: 'Main Courses', image: 'https://res.cloudinary.com/dubg7bfmv/image/upload/v1761491487/poseidons_pearl_pasta_the_oceans_bounty_handmade_s_qqdtdj.jpg',
         tagline: "The Ocean's Bounty",
         ingredients: ['Squid Ink Pasta', 'Lobster Tail', 'Shrimp', 'Mussels', 'White Wine']
     },
     {
-        id: 103, name: 'Siren’s Song Cocktail', description: 'A mesmerizing color-changing cocktail with gin, elderflower liqueur, and butterfly pea tea.', price: '$22', category: 'Beverages', image: 'https://res.cloudinary.com/dubg7bfmv/image/upload/v1761459887/generated-image-1761459861924_nrsuvu.jpg',
+        id: 103, name: 'Siren’s Song Cocktail', description: 'A mesmerizing color-changing cocktail with gin, elderflower liqueur, and butterfly pea tea.', price: '$22', category: 'Beverages', image: 'https://res.cloudinary.com/dubg7bfmv/image/upload/v1761491486/sirens_song_cocktail_an_enchanting_elixir_a_mesmer_rk27vr.jpg',
         tagline: "An Enchanting Elixir",
         ingredients: ['Gin', 'Elderflower Liqueur', 'Butterfly Pea Tea', 'Citrus', 'Tonic']
     },
