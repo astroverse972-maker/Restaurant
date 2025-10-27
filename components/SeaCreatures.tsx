@@ -136,7 +136,6 @@ const SeaCreature: React.FC<{ creature: any; interactionPoint: React.MutableRefO
                 color: 'rgba(255, 255, 255, 0.7)',
                 opacity: creature.opacity,
                 zIndex: creature.zIndex,
-                filter: 'drop-shadow(0 0 8px #00FFFF)',
                 willChange: 'transform'
             }}
         >
