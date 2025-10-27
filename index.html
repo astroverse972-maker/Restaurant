@@ -22,7 +22,6 @@
                 animation: {
                     'gradient-flow': 'gradient-flow 15s ease infinite',
                     'glow-aura': 'glow-aura 1.5s ease-in-out infinite alternate',
-                    'creature-bob': 'creature-bob 3s ease-in-out infinite',
                 },
                 keyframes: {
                     'gradient-flow': {
@@ -32,10 +31,6 @@
                     'glow-aura': {
                         'from': { boxShadow: '0 0 10px rgba(0, 255, 255, 0.4), 0 0 5px rgba(255, 255, 255, 0.8) inset' },
                         'to': { boxShadow: '0 0 20px rgba(0, 255, 255, 0.8), 0 0 10px rgba(255, 255, 255, 1) inset' },
-                    },
-                    'creature-bob': {
-                        '0%, 100%': { transform: 'translateY(0px)' },
-                        '50%': { transform: 'translateY(5px)' },
                     },
                 }
             }
@@ -59,17 +54,18 @@
     </style>
 
     <script type="importmap">
-    {
-      "imports": {
-        "react": "https://aistudiocdn.com/react@^19.2.0",
-        "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
-        "react/": "https://aistudiocdn.com/react@^19.2.0/",
-        "react-router-dom": "https://aistudiocdn.com/react-router-dom@^7.9.4",
-        "framer-motion": "https://aistudiocdn.com/framer-motion@^12.23.24",
-        "lucide-react": "https://aistudiocdn.com/lucide-react@^0.547.0"
-      }
-    }
-    </script>
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react-router-dom": "https://aistudiocdn.com/react-router-dom@^7.9.4",
+    "framer-motion": "https://aistudiocdn.com/framer-motion@^12.23.24",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.547.0",
+    "react-dom": "https://aistudiocdn.com/react-dom@^19.2.0"
+  }
+}
+</script>
 </head>
 <body>
     <div id="root"></div>
