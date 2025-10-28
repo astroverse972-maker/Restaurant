@@ -44,12 +44,24 @@
         .hover-glow-aura:hover {
             animation: glow-aura 1.5s ease-in-out infinite alternate;
         }
-        .caustics-filter {
-            filter: url(#caustics);
-        }
         .fade-edges {
             -webkit-mask-image: radial-gradient(ellipse at center, black 60%, transparent 100%);
             mask-image: radial-gradient(ellipse at center, black 60%, transparent 100%);
+        }
+
+        @keyframes swim-across {
+            from { transform: translate(-15vw, 0) scaleX(1); }
+            to { transform: translate(115vw, 0) scaleX(1); }
+        }
+        
+        @keyframes swim-across-flip {
+            from { transform: translate(115vw, 0) scaleX(-1); }
+            to { transform: translate(-15vw, 0) scaleX(-1); }
+        }
+
+        @keyframes crab-walk {
+            from { transform: translate(-15vw, 0); }
+            to { transform: translate(115vw, 0); }
         }
     </style>
 
